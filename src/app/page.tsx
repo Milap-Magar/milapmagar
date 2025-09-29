@@ -1,7 +1,6 @@
 import Content from "./components/ui/Content";
 import Navbar from "./components/ui/Navbar";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -21,7 +20,7 @@ export default function Home() {
               A Full-stack developer
             </h2>
           </div>
-          <img
+          <Image
             src="/cat.png"
             alt="Cat Image"
             className="w-full max-w-xl object-contain max-h-[80vh] rounded-2xl"
