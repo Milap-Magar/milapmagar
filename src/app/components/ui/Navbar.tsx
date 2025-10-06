@@ -19,7 +19,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10); 
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -33,8 +33,8 @@ const Navbar = () => {
         className={`flex items-center justify-center px-6 gap-12 transition-all duration-300
   ${
     scrolled
-      ? "max-w-7xl bg-[#fd9596]/80 rounded-s-full rounded-e-full mt-2 h-16"
-      : "w-full bg-[#fd9596] h-16"
+      ? "max-w-7xl bg-[#fa9a9b]/80 rounded-s-full rounded-e-full mt-2 h-16"
+      : "w-full bg-[#fa9a9b] h-16"
   }`}
       >
         {/* Left side links */}
