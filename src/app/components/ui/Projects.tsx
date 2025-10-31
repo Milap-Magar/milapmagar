@@ -72,7 +72,7 @@ export const Projects: React.FC = () => {
             "Postman",
             "MailMug",
           ],
-        },``
+        },
       ],
     },
   ];

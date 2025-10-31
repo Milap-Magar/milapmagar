@@ -10,7 +10,6 @@ import {
   GraduationCap,
   Calendar,
   MapPin,
-  Workflow,
 } from "lucide-react";
 import React from "react";
 import { Projects } from "./Projects";

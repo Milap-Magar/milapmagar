@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Twitter, Mail, Youtube } from "lucide-react";
+import { Facebook, Instagram, Mail } from "lucide-react";
 import React from "react";
 
 const Footer = () => {
