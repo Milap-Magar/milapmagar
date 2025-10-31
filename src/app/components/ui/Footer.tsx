@@ -16,9 +16,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
     { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Mail, href: "#", label: "Email" },
-    { icon: Youtube, href: "#", label: "YouTube" },
   ];
 
   const containerVariants = {

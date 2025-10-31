@@ -13,6 +13,7 @@ import {
   Workflow,
 } from "lucide-react";
 import React from "react";
+import { Projects } from "./Projects";
 
 const Content = () => {
   const timelineData = [
@@ -84,59 +85,6 @@ const Content = () => {
       type: "folder",
       title: "Skills/",
       icon: <Code className="w-5 h-5" />,
-      items: [
-        {
-          type: "folder",
-          title: "Languages/",
-          icon: <FolderOpen className="w-4 h-4" />,
-          skills: [
-            "JavaScript",
-            "HTML",
-            "CSS",
-            "TypeScript",
-            "Java",
-            "SQL",
-            "C",
-          ],
-        },
-        {
-          type: "folder",
-          title: "Technologies/",
-          icon: <FolderOpen className="w-4 h-4" />,
-          skills: [
-            "React.js",
-            "Next.js",
-            "Tailwind CSS",
-            "Material UI",
-            "Nest.js",
-            "Bootstrap",
-            "Zod",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
-          ],
-        },
-        {
-          type: "folder",
-          title: "Tools/",
-          icon: <FolderOpen className="w-4 h-4" />,
-          skills: [
-            "VS Code",
-            "MySQL",
-            "Git",
-            "Git-Bash",
-            "Figma",
-            "Apollo Studio",
-            "Postman",
-            "MailMug",
-          ],
-        },
-      ],
-    },
-    {
-      type: "project",
-      title: "Projects/",
-      icon: <Workflow className="w-5 h-5" />,
       items: [
         {
           type: "folder",
@@ -328,6 +276,9 @@ const Content = () => {
             ))}
           </div>
         </div>
+
+        {/* Projects Section */}
+        <Projects />
 
         <div className="h-[20vh]"></div>
       </div>

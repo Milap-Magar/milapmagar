@@ -1,6 +1,7 @@
 import Content from "./components/ui/Content";
 import Footer from "./components/ui/Footer";
 import Navbar from "./components/ui/Navbar";
+import { Projects } from "./components/ui/Projects";
 import Image from "next/image";
 
 export default function Home() {
