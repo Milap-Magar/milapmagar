@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FolderOpen, MapPin, Workflow, Calendar } from "lucide-react";
+import { MapPin, Calendar, FolderGit2, GlobeLock } from "lucide-react";
 import React from "react";
 
 type TimelineItem = {
@@ -25,52 +25,61 @@ export const Projects: React.FC = () => {
     {
       type: "project",
       title: "Projects/",
-      icon: <Workflow className="w-5 h-5" />,
+      icon: <FolderGit2 className="w-5 h-5" />,
       items: [
         {
           type: "folder",
-          title: "Languages/",
-          icon: <FolderOpen className="w-4 h-4" />,
-          skills: [
-            "JavaScript",
-            "HTML",
-            "CSS",
-            "TypeScript",
-            "Java",
-            "SQL",
-            "C",
-          ],
-        },
-        {
-          type: "folder",
-          title: "Technologies/",
-          icon: <FolderOpen className="w-4 h-4" />,
+          title: "Shreejana Home Packing Udhyog / www.shreejanadryfruits.com",
+          icon: <GlobeLock className="w-4 h-4" />,
           skills: [
             "React.js",
-            "Next.js",
-            "Tailwind CSS",
-            "Material UI",
             "Nest.js",
-            "Bootstrap",
-            "Zod",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
+            "Mongo.db",
+            "Jwt-Token",
+            "Tailwind CSS",
+            "TypeScript",
+            "Zoho Admin Host",
+            "Zoho Mail",
+            "Zoho CRM",
           ],
         },
         {
           type: "folder",
-          title: "Tools/",
-          icon: <FolderOpen className="w-4 h-4" />,
+          title: "Guruko : An Online School Mobile App / www.guruko.com",
+          icon: <GlobeLock className="w-4 h-4" />,
           skills: [
-            "VS Code",
-            "MySQL",
-            "Git",
-            "Git-Bash",
-            "Figma",
-            "Apollo Studio",
-            "Postman",
-            "MailMug",
+            "React.js",
+            "ReactNative.js",
+            "Nest.js",
+            "Supabase",
+            "Tailwind CSS",
+            "TypeScript",
+          ],
+        },
+        {
+          type: "folder",
+          title:
+            "Gaau Sahar : Online Vegetables Delivery App / www.gausahar.com",
+          icon: <GlobeLock className="w-4 h-4" />,
+          skills: ["Next.js", "Tailwind CSS", "TypeScript"],
+        },
+        {
+          type: "folder",
+          title: "Vault : Cloud Storage System / www.vault.vercel.app",
+          icon: <GlobeLock className="w-4 h-4" />,
+          skills: ["Next.js", "Appwrite", "Tailwind CSS", "TypeScript"],
+        },
+        {
+          type: "folder",
+          title: "Complain Management System / www.complain.vercel.app",
+          icon: <GlobeLock className="w-4 h-4" />,
+          skills: [
+            "React.js",
+            "Node.js",
+            "Express.js",
+            "MySql2",
+            "Tailwind CSS",
+            "TypeScript",
           ],
         },
       ],
@@ -78,7 +87,7 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <div className="w-full mt-10">
+    <div className="w-full mt-10" id="projects">
       {/* Header */}
       <div className="flex items-center justify-center">
         <h1 className="text-2xl text-black font-[--font-tangerine] bg-slate-200 rounded-full w-12 h-12 flex items-center justify-center p-[43px]">
@@ -87,7 +96,7 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Timeline */}
-      <div className="mt-16 text-left relative">
+      <div className="mt-10 text-left relative">
         {/* Main vertical line */}
         <div className="absolute left-6 top-0 w-px bg-gray-300 h-full" />
 

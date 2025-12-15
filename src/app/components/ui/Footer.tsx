@@ -7,10 +7,10 @@ import React from "react";
 const Footer = () => {
   const navLinks = [
     { label: "Home", href: "#" },
-    { label: "About", href: "#About" },
-    { label: "Experience", href: "#Experience" },
-    { label: "Project", href: "#Project" },
-    { label: "Contact", href: "#Contact" },
+    { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
+    { label: "Project", href: "#project" },
+    { label: "Contact", href: "#contact" },
   ];
 
   const socialLinks = [

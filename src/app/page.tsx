@@ -24,9 +24,11 @@ export default function Home() {
           <Image
             src="/cat.png"
             alt="Cat Image"
-            width={100}
-            height={100}
-            className="w-full max-w-xl object-contain max-h-[80vh] rounded-2xl"
+            width={1024}
+            height={1536}
+            quality={100}
+            priority
+            className="max-h-[80vh] w-auto object-contain rounded-2xl"
           />
         </figure>
 

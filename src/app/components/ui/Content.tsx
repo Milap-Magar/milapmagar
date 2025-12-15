@@ -12,7 +12,7 @@ import {
   MapPin,
 } from "lucide-react";
 import React from "react";
-import { Projects } from "./Projects";
+import { Projects } from "../../pages/Projects";
 
 const Content = () => {
   const timelineData = [
@@ -89,27 +89,24 @@ const Content = () => {
           type: "folder",
           title: "Languages/",
           icon: <FolderOpen className="w-4 h-4" />,
-          skills: [
-            "JavaScript",
-            "HTML",
-            "CSS",
-            "TypeScript",
-            "Java",
-            "SQL",
-            "C",
-          ],
+          skills: ["HTML", "CSS", "JavaScript", "TypeScript", "SQL"],
         },
         {
           type: "folder",
-          title: "Technologies/",
+          title: "Frontend Technologies / Frameworks",
           icon: <FolderOpen className="w-4 h-4" />,
           skills: [
             "React.js",
             "Next.js",
+            "Daisy UI",
             "Tailwind CSS",
+            "Bootstrap UI",
+            "Zustand",
+            "@tanstack/Query",
+            "@tanstack/react-query",
+            "@tanstack/react-table",
             "Material UI",
             "Nest.js",
-            "Bootstrap",
             "Zod",
             "Node.js",
             "Express.js",
@@ -118,18 +115,42 @@ const Content = () => {
         },
         {
           type: "folder",
+          title: "Backend Technologies / Frameworks",
+          icon: <FolderOpen className="w-4 h-4" />,
+          skills: [
+            "Nest.js",
+            "Node.js",
+            "Express.js",
+            "Jwt-Token",
+            "Docker",
+            "Zod",
+          ],
+        },
+        {
+          type: "folder",
+          title: "Database",
+          icon: <FolderOpen className="w-4 h-4" />,
+          skills: ["MySql.db", "Mongo.db"],
+        },
+        {
+          type: "folder",
           title: "Tools/",
           icon: <FolderOpen className="w-4 h-4" />,
           skills: [
+            "Linux",
             "VS Code",
             "MySQL",
-            "Git",
-            "Git-Bash",
             "Figma",
             "Apollo Studio",
             "Postman",
             "MailMug",
           ],
+        },
+        {
+          type: "folder",
+          title: "Extra Tools Used/",
+          icon: <FolderOpen className="w-4 h-4" />,
+          skills: ["Trello", "Git", "Github"],
         },
       ],
     },
@@ -181,7 +202,7 @@ const Content = () => {
                 </div>
 
                 {/* Section items */}
-                <div className="ml-6 relative">
+                <div className="ml-6 relative" id="experience">
                   {/* Horizontal connecting line */}
                   <div className="absolute left-0 top-0 w-6 h-px bg-gray-300"></div>
 
@@ -278,8 +299,6 @@ const Content = () => {
 
         {/* Projects Section */}
         <Projects />
-
-        <div className="h-[20vh]"></div>
       </div>
     </div>
   );
