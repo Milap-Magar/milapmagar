@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Mail } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
 import React from "react";
 
 const Footer = () => {
@@ -14,9 +14,22 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Mail, href: "#", label: "Email" },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/Milap.Magar2022",
+      label: "Facebook",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/milaapeeey/",
+      label: "Instagram",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/milap-magar-21427a229/",
+      label: "LinkedIn",
+    },
+    { icon: Mail, href: "mailto:milapamagar12@gmail.com", label: "Email" },
   ];
 
   const containerVariants = {

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex items-start justify-between min-h-screen relative">
+    <main className="w-full flex items-start justify-between min-h-screen relative">
       <div className="flex-1 bg-[#fa9a9b] relative z-0">
         {/* Navbar */}
         <Navbar />
