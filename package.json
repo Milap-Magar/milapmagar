@@ -13,8 +13,7 @@
     "lucide-react": "^0.516.0",
     "next": "15.3.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "ui": "git+https://github.com/shadcn/ui.git"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
