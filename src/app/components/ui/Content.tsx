@@ -23,6 +23,13 @@ const Content = () => {
       items: [
         {
           type: "file",
+          title: "Adarsha Vidya Ashram (AVM)",
+          subtitle: "Higher Levels : +2",
+          period: "2020 - 2022",
+          icon: <File className="w-4 h-4" />,
+        },
+        {
+          type: "file",
           title: "Patan Multiple Campus",
           subtitle: "BCA - Bachelor in Computer Application",
           period: "Feb 2022 - present",
