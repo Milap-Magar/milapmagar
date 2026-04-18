@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "NODE_OPTIONS=--no-experimental-webstorage next dev",
+    "build": "NODE_OPTIONS=--no-experimental-webstorage next build",
+    "start": "NODE_OPTIONS=--no-experimental-webstorage next start",
     "lint": "next lint"
   },
   "dependencies": {
     "framer-motion": "^12.18.1",
+    "gsap": "^3.15.0",
     "lucide-react": "^0.516.0",
     "next": "15.3.6",
     "react": "^19.0.0",

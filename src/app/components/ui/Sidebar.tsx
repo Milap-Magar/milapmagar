@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from "@/app/utils/utils";
+import { navLinks } from "@/app/utils";
 import Image from "next/image";
 import Link from "next/link";
 

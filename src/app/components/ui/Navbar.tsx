@@ -26,14 +26,16 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
+    <header
       className={`sticky top-0 z-30 flex justify-center transition-all duration-300`}
+      role="banner"
     >
-      <div
+      <nav
+        aria-label="Primary"
         className={`flex items-center justify-center px-6 gap-12 transition-all duration-300
   ${
     scrolled
-      ? "max-w-7xl bg-[#fa9a9b]/80 rounded-s-full rounded-e-full mt-2 h-16"
+      ? "max-w-7xl bg-[#fa9a9b]/80 backdrop-blur rounded-s-full rounded-e-full mt-2 h-16 shadow-md"
       : "w-full bg-[#fa9a9b] h-16"
   }`}
       >
@@ -52,14 +54,19 @@ const Navbar = () => {
         </ul>
 
         {/* Center Logo */}
-        <Link href="/" className="flex justify-center items-center px-4">
+        <Link
+          href="/"
+          aria-label="Home"
+          className="flex justify-center items-center px-4"
+        >
           <figure>
             <Image
               src="/mm.png"
-              alt="Logo"
+              alt="Milap Magar logo"
               width={70}
               height={50}
               className="rounded-full"
+              priority
             />
           </figure>
         </Link>
@@ -77,8 +84,8 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 

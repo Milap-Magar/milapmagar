@@ -12,7 +12,6 @@ import {
   MapPin,
 } from "lucide-react";
 import React from "react";
-import { Projects } from "../../pages/Projects";
 
 const Content = () => {
   const timelineData = [
@@ -316,8 +315,6 @@ const Content = () => {
           </div>
         </div>
 
-        {/* Projects Section */}
-        <Projects />
       </div>
     </div>
   );

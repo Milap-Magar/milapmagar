@@ -29,7 +29,7 @@ const Footer = () => {
       href: "https://www.linkedin.com/in/milap-magar-21427a229/",
       label: "LinkedIn",
     },
-    { icon: Mail, href: "mailto:milapamagar12@gmail.com", label: "Email" },
+    { icon: Mail, href: "mailto:info@milapmagar.com.np", label: "Email" },
   ];
 
   const containerVariants = {
