@@ -175,26 +175,8 @@ const Content = () => {
   ];
 
   return (
-    <div className="text-center mt-[-10vh] px-4 relative z-20 bg-white min-h-[150vh] shadow-2xl rounded-t-3xl">
+    <div className="text-center mt-[-10vh] px-4 relative z-20 bg-gradient-to-b from-red-200 to-white min-h-[150vh] rounded-t-3xl">
       <div className="pt-16 pb-12 max-w-4xl mx-auto">
-        {/* Custom Intro */}
-        <div className="w-full items-center justify-center flex mb-4">
-          <h1 className="text-2xl text-black font-[--font-tangerine] bg-slate-200 rounded-full w-12 p-[43px] h-12 flex items-center justify-center">
-            /Me
-          </h1>
-        </div>
-        <h2 className="text-4xl text-black font-[--font-tangerine]">
-          Milap Ramauli Magar
-        </h2>
-        <h2 className="text-3xl text-gray-800 mt-4 font-[--font-tangerine]">
-          A Fullstack developer
-        </h2>
-
-        {/* Japanese line */}
-        <p className="mt-6 text-xl text-black font-[var(--font-noto-sans-jp)]">
-          こんにちは、私はフルスタック開発者のミラップです。
-        </p>
-
         {/* File System Timeline */}
         <div className="mt-16 text-left">
           <div className="relative">
@@ -314,7 +296,6 @@ const Content = () => {
             ))}
           </div>
         </div>
-
       </div>
     </div>
   );

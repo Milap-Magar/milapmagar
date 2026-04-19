@@ -53,22 +53,8 @@ const Contact = () => {
     <section
       id="contact"
       aria-label="Contact"
-      className="relative w-full min-h-screen overflow-hidden bg-gradient-to-b from-white via-[#fff5f5] to-[#fa9a9b]/30"
+      className="relative w-full min-h-screen overflow-hidden bg-white"
     >
-      {/* Decorative gooey blobs (reduced-motion friendly) */}
-      <div
-        aria-hidden
-        className="blob absolute -top-32 -right-24 w-[28rem] h-[28rem] bg-[#fa9a9b]/40 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="blob blob--alt absolute -bottom-40 -left-24 w-[32rem] h-[32rem] bg-[#fa9a9b]/30 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="blob absolute top-1/3 left-1/2 -translate-x-1/2 w-[20rem] h-[20rem] bg-[#fa9a9b]/20 blur-3xl opacity-70"
-      />
-
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
         {/* Heading */}
         <div className="text-center mb-14 md:mb-20">

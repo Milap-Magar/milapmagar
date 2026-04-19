@@ -29,7 +29,7 @@ const projects: Project[] = [
     accent: "#fa9a9b",
   },
   {
-    title: "Gaau Sahar",
+    title: "Sharky Payment ",
     tagline: "Online vegetables delivery, farm to doorstep.",
     stack: ["Next.js", "TypeScript", "Tailwind"],
     url: "https://shark-payment.vercel.app",
