@@ -30,7 +30,7 @@ const projects: Project[] = [
   },
   {
     title: "Sharky Payment ",
-    tagline: "Online vegetables delivery, farm to doorstep.",
+    tagline: "Online payment and authentic transaction",
     stack: ["Next.js", "TypeScript", "Tailwind"],
     url: "https://shark-payment.vercel.app",
     accent: "#86efac",
