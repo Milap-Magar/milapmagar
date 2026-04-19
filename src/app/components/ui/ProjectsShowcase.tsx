@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Label from "./Label";
 
 type Project = {
   title: string;
@@ -10,16 +11,20 @@ type Project = {
   stack: string[];
   url: string;
   accent: string;
+  commingSoon?: boolean;
+  image: string;
 };
 
 const projects: Project[] = [
   {
-    title: "Mini-Hub",
+    title: "Codenest",
     tagline:
       "Github style local code storage and code-base management application",
     stack: ["Next.js", "Node.js", "Express.js", "Supabase", "TypeScript"],
-    url: "https://milap-magar.github.io/apps/minihub",
-    accent: "#7dd3fc",
+    url: "https://codenestify.vercel.app/",
+    accent: "000000",
+    commingSoon: true,
+    image: "/Project-Showcase/codenest.png",
   },
   {
     title: "Shreejana Dry Fruits",
@@ -27,6 +32,7 @@ const projects: Project[] = [
     stack: ["React", "Nest.js", "MongoDB", "Tailwind", "Zoho"],
     url: "https://shreejanadryfruits.com",
     accent: "#fa9a9b",
+    image: "/Project-Showcase/shreejana.png",
   },
   {
     title: "Sharky Payment ",
@@ -34,13 +40,16 @@ const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Tailwind"],
     url: "https://shark-payment.vercel.app",
     accent: "#86efac",
+    commingSoon: true,
+    image: "/Project-Showcase/sharky.png",
   },
   {
     title: "Vault",
     tagline: "Private cloud storage system with granular access.",
     stack: ["Next.js", "Appwrite", "Tailwind", "TypeScript"],
-    url: "my-vault-inc.vercel.app/landing",
+    url: "https://my-vault-inc.vercel.app/landing",
     accent: "#c4b5fd",
+    image: "/Project-Showcase/Vault.png",
   },
 ];
 
@@ -116,7 +125,7 @@ const ProjectsShowcase = () => {
         {projects.map((project, i) => (
           <article
             key={project.title}
-            className="relative w-screen min-h-screen md:h-screen flex-shrink-0 flex items-center justify-center px-6 md:px-20 py-20 md:py-0"
+            className="relative w-screen min-h-screen md:h-screen shrink-0 flex items-center justify-center px-6 md:px-20 py-20 md:py-0"
             style={{
               background: `linear-gradient(135deg, ${project.accent}26 0%, #ffffff 70%)`,
             }}
@@ -125,7 +134,7 @@ const ProjectsShowcase = () => {
               {/* Mock browser preview */}
               <div className="md:col-span-7 order-2 md:order-1">
                 <div
-                  className="relative aspect-[16/10] rounded-xl shadow-2xl overflow-hidden border border-black/5"
+                  className="relative aspect-16/10 rounded-xl shadow-2xl overflow-hidden border border-black/5"
                   style={{ backgroundColor: project.accent }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-8 bg-black/20 backdrop-blur-sm flex items-center px-3 gap-1.5 z-10">
@@ -136,21 +145,20 @@ const ProjectsShowcase = () => {
                       {project.url}
                     </span>
                   </div>
-                  <div className="absolute inset-0 pt-8 flex items-center justify-center text-white">
-                    <div className="text-center">
-                      <div className="font-mono text-8xl md:text-9xl font-black opacity-30 leading-none">
-                        0{i + 1}
-                      </div>
-                      <p className="mt-2 font-mono text-[10px] md:text-xs opacity-80 tracking-[0.25em] uppercase">
-                        Screenshot placeholder
-                      </p>
-                    </div>
+                  <div className="absolute inset-0 pt-8 overflow-hidden bg-gray-900">
+                    <img
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      className="w-full h-full object-cover object-top"
+                      style={{ minHeight: "100%" }}
+                    />
                   </div>
                 </div>
               </div>
 
               {/* Info column */}
               <div className="md:col-span-5 order-1 md:order-2 text-left">
+                {project.commingSoon && <Label title="Comming Soon" />}
                 <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-gray-500">
                   Project 0{i + 1} / 0{projects.length}
                 </span>
