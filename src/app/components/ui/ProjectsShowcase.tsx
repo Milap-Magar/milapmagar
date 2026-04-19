@@ -14,39 +14,33 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "Mini-Hub",
+    tagline:
+      "Github style local code storage and code-base management application",
+    stack: ["Next.js", "Node.js", "Express.js", "Supabase", "TypeScript"],
+    url: "https://milap-magar.github.io/apps/minihub",
+    accent: "#7dd3fc",
+  },
+  {
     title: "Shreejana Dry Fruits",
     tagline: "E-commerce platform for a home-packing udhyog.",
     stack: ["React", "Nest.js", "MongoDB", "Tailwind", "Zoho"],
-    url: "shreejanadryfruits.com",
+    url: "https://shreejanadryfruits.com",
     accent: "#fa9a9b",
-  },
-  {
-    title: "Guruko",
-    tagline: "Online school — a mobile-first learning app.",
-    stack: ["React Native", "Nest.js", "Supabase", "TypeScript"],
-    url: "guruko.com",
-    accent: "#7dd3fc",
   },
   {
     title: "Gaau Sahar",
     tagline: "Online vegetables delivery, farm to doorstep.",
     stack: ["Next.js", "TypeScript", "Tailwind"],
-    url: "gausahar.com",
+    url: "https://shark-payment.vercel.app",
     accent: "#86efac",
   },
   {
     title: "Vault",
     tagline: "Private cloud storage system with granular access.",
     stack: ["Next.js", "Appwrite", "Tailwind", "TypeScript"],
-    url: "vault.vercel.app",
+    url: "my-vault-inc.vercel.app/landing",
     accent: "#c4b5fd",
-  },
-  {
-    title: "Complain Management",
-    tagline: "Admin portal for municipal issue tracking.",
-    stack: ["React", "Node.js", "Express", "MySQL"],
-    url: "complain.vercel.app",
-    accent: "#fde68a",
   },
 ];
 
@@ -82,7 +76,7 @@ const ProjectsShowcase = () => {
               if (progressRef.current) {
                 const idx = Math.min(
                   projects.length,
-                  Math.max(1, Math.ceil(self.progress * projects.length) || 1)
+                  Math.max(1, Math.ceil(self.progress * projects.length) || 1),
                 );
                 progressRef.current.textContent = `0${idx} / 0${projects.length}`;
               }
@@ -166,9 +160,14 @@ const ProjectsShowcase = () => {
                 <p className="mt-4 text-base md:text-lg text-gray-600 leading-relaxed">
                   {project.tagline}
                 </p>
-                <p className="mt-2 font-mono text-xs text-gray-400">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 font-mono text-xs text-red-500"
+                >
                   → {project.url}
-                </p>
+                </a>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
                     <span
