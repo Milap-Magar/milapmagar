@@ -175,7 +175,7 @@ const Content = () => {
   ];
 
   return (
-    <div className="text-center mt-[-10vh] px-4 relative z-20 bg-gradient-to-b from-red-200 to-white min-h-[150vh] rounded-t-3xl">
+    <div className="text-center mt-[-10vh] px-4 relative z-20 bg-gradient-to-b from-red-100 to-white min-h-[150vh] rounded-t-3xl">
       <div className="pt-16 pb-12 max-w-4xl mx-auto">
         {/* File System Timeline */}
         <div className="mt-16 text-left">

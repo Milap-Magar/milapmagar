@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400&display=swap");
+
+/* ── Design tokens ─────────────────────────────────────────────────────────── */
+:root {
+    --amber: #f59e0b;
+    --amber2: #fbbf24;
+    --ink: #09090b;
+    --ink2: #111113;
+    --muted: #52525b;
+    --faint: #27272a;
+    --white: #fafafa;
+}
+
+/* ── Grain overlay (pseudo-element on section) ─────────────────────────────── */
+.hero-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+}
+
+/* ── Vertical grid lines (pseudo-element on section) ──────────────────────── */
+.hero-grid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent calc(12.5% - 1px),
+        rgba(255, 255, 255, 0.022) calc(12.5% - 1px),
+        rgba(255, 255, 255, 0.022) 12.5%
+    );
+}
+
+/* ── Display name typography ───────────────────────────────────────────────── */
+.hero-name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    font-size: clamp(4rem, 12vw, 10rem);
+}
+
+.hero-name .italic-word {
+    font-style: italic;
+    color: var(--amber);
+}
+
+/* ── Word-mask: clips word during slide-up reveal ─────────────────────────── */
+.word-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.06em; /* prevent descender clip */
+}
+
+.word {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+/* ── Monospace utility ─────────────────────────────────────────────────────── */
+.hero-mono {
+    font-family: "DM Mono", "Fira Mono", monospace;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+}
+
+/* ── Role / tech chips ─────────────────────────────────────────────────────── */
+.role-chip {
+    font-family: "DM Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--faint);
+    padding: 4px 10px;
+    border-radius: 2px;
+    opacity: 0; /* animated in by GSAP */
+}
+
+.role-chip.active {
+    color: var(--amber);
+    border-color: var(--amber);
+    background: rgba(245, 158, 11, 0.07);
+}
+
+/* ── Accent horizontal rule ────────────────────────────────────────────────── */
+.accent-line {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        var(--amber),
+        var(--amber2),
+        transparent
+    );
+    transform-origin: left center;
+}
+
+/* ── Primary CTA button ────────────────────────────────────────────────────── */
+.cta-primary {
+    font-family: "DM Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--amber);
+    color: var(--ink);
+    padding: 12px 28px;
+    border-radius: 2px;
+    font-weight: 400;
+    display: inline-block;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.cta-primary:hover {
+    background: var(--amber2);
+    transform: translateY(-2px);
+}
+
+/* ── Ghost / outline CTA ───────────────────────────────────────────────────── */
+.cta-ghost {
+    font-family: "DM Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--faint);
+    color: var(--muted);
+    padding: 12px 28px;
+    border-radius: 2px;
+    font-weight: 400;
+    display: inline-block;
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.cta-ghost:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    transform: translateY(-2px);
+}
+
+/* ── Social icon links ─────────────────────────────────────────────────────── */
+.hero-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition:
+        color 0.2s ease,
+        transform 0.22s ease;
+}
+
+.hero-social-icon:hover {
+    color: var(--amber);
+    transform: translateY(-3px);
+}
+
+/* ── Large background watermark text ──────────────────────────────────────── */
+.hero-watermark {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(6rem, 18vw, 18rem);
+    font-weight: 900;
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+    user-select: none;
+    white-space: nowrap;
+    pointer-events: none;
+    line-height: 1;
+}
+
+/* ── Scroll indicator line ─────────────────────────────────────────────────── */
+.hero-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--amber), transparent);
+}
+
+/* ── Stat counter numbers ──────────────────────────────────────────────────── */
+.hero-stat-number {
+    font-family: "Playfair Display", serif;
+    color: var(--white);
+    font-size: 3rem; /* ~text-5xl */
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* ── Availability dot pulse ─────────────────────────────────────────────────── */
+@keyframes hero-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.hero-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34d399; /* emerald-400 */
+    animation: hero-pulse 2s ease-in-out infinite;
+}

@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap");
+
+/* ── Tokens ───────────────────────────────────────────────────────────────── */
+:root {
+    --amber: #f59e0b;
+    --amber2: #fbbf24;
+    --ink: #09090b;
+    --faint: #27272a;
+    --muted: rgba(255, 255, 255, 0.55);
+    --white: #fafafa;
+}
+
+/* ── Fixed header wrapper ─────────────────────────────────────────────────── */
+.nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    /* Padding grows when scrolled — drives the "floating pill" movement */
+    padding: 0 0;
+    transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-header.scrolled {
+    padding: 12px 20px;
+}
+
+/* ── Nav bar ──────────────────────────────────────────────────────────────── */
+.nav-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* Base (top-of-page) state */
+    height: 64px;
+    padding: 0 2rem;
+    max-width: 100%;
+    background: transparent;
+    border-radius: 0px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: transparent;
+    box-shadow: none;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+
+    /*
+    Transition every morphing property explicitly.
+    cubic-bezier(0.16, 1, 0.3, 1) = expo.out — fast out, long soft tail.
+    backdrop-filter needs its own duration because some browsers lag on it.
+  */
+    transition:
+        height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        border-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        backdrop-filter 0.5s ease;
+}
+
+/* Scrolled pill state */
+.nav-bar.scrolled {
+    max-width: 800px;
+    height: 52px;
+    padding: 0 1.6rem;
+    background: rgba(9, 9, 11, 0.82);
+    border-radius: 9999px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(39, 39, 42, 0.9);
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+/* ── Nav links list ───────────────────────────────────────────────────────── */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Individual link ──────────────────────────────────────────────────────── */
+.nav-link {
+    font-family: "DM Mono", "Fira Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.22s ease;
+}
+
+/* Animated underline */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--amber);
+    transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover {
+    color: var(--white);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--amber);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────────── */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.nav-logo-img {
+    border-radius: 50%;
+    border: 1px solid var(--faint);
+    object-fit: cover;
+    width: 42px;
+    height: 42px;
+    transition:
+        width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.nav-bar.scrolled .nav-logo-img {
+    width: 34px;
+    height: 34px;
+}
+
+.nav-logo:hover .nav-logo-img {
+    border-color: var(--amber);
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.28);
+}
+
+/* ── Hamburger ────────────────────────────────────────────────────────────── */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.6);
+    transition:
+        transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.25s ease,
+        width 0.28s ease,
+        background 0.2s ease;
+    transform-origin: center;
+}
+
+.nav-hamburger:hover span {
+    background: var(--white);
+}
+
+.nav-hamburger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+    background: var(--amber);
+}
+.nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+    background: var(--amber);
+}
+
+/* ── Mobile full-screen drawer ────────────────────────────────────────────── */
+.nav-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-16px) scale(0.98);
+    transition:
+        opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-drawer.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+/* Grain on drawer */
+.nav-drawer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity: 0.45;
+}
+
+.nav-drawer-link {
+    font-family: "DM Mono", monospace;
+    font-size: 1rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-drawer-link::before {
+    content: "→ ";
+    color: var(--amber);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.nav-drawer-link:hover {
+    color: var(--white);
+}
+.nav-drawer-link:hover::before {
+    opacity: 1;
+}
+
+/* ── Breakpoints ──────────────────────────────────────────────────────────── */
+@media (max-width: 639px) {
+    .nav-links {
+        display: none !important;
+    }
+    .nav-hamburger {
+        display: flex;
+    }
+}
+
+@media (min-width: 640px) {
+    .nav-hamburger {
+        display: none;
+    }
+    .nav-drawer {
+        display: none;
+    }
+}
