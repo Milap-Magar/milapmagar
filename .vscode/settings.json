@@ -1,0 +1,7 @@
+{
+  "// Console Ninja was injecting broken instrumentation into Next.js's webpack": "dev bundle, which crashed client-side hydration. Disable its auto-support for Next.js/webpack so it stops patching node_modules/next.",
+  "console-ninja.toolsToEnableSupportAutomaticallyFor": {
+    "next.js": false,
+    "webpack": false
+  }
+}

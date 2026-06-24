@@ -1,0 +1,551 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap");
+
+/* ─── Design tokens (self-contained for the root portfolio page) ────────────
+   The component markup references token names like --ink (bg), --white (text),
+   --muted/--muted2 (secondary text), --faint/--line (borders) and --amber
+   (accent). We keep those names but swap their VALUES per theme, so no
+   component needs to change. The "amber" accent now resolves to the brand
+   green rgb(62, 207, 142).
+
+   Resolution order (last match wins):
+     1. .sd-root .......................... dark (base default)
+     2. @media (prefers-color-scheme:light) device-light default
+     3. [data-theme="dark"]  .sd-root ..... user forced dark
+     4. [data-theme="light"] .sd-root ..... user forced light
+   (data-theme is set on <html> by the toggle / anti-FOUC script.)            */
+
+.sd-root {
+  /* constant accent — brand green */
+  --amber: #3ecf8e; /* rgb(62, 207, 142) */
+  --amber2: #5fe0a6; /* lighter hover tint */
+  --on-amber: #08110d; /* text on green buttons — always dark */
+  --accent-soft: rgba(62, 207, 142, 0.12); /* tinted icon chips      */
+  --accent-line: rgba(62, 207, 142, 0.4); /* hover border           */
+
+  /* dark theme (base default) — charcoal #333 family + glowing green */
+  --ink: #232325; /* page background        */
+  --ink2: #303033; /* card surface (~#333)   */
+  --ink3: #3a3a3e; /* card hover surface     */
+  --white: #f4f4f5; /* primary text           */
+  --muted2: #b3b3ba; /* secondary / body text  */
+  --muted: #85858d; /* subtle text            */
+  --line: rgba(255, 255, 255, 0.08); /* hairline border */
+  --faint: #44444a; /* stronger border        */
+  --nav-bg: rgba(35, 35, 37, 0.72); /* scrolled nav backdrop */
+  --grid-line: rgba(255, 255, 255, 0.04); /* crossed bg lines      */
+  --glow: 0 0 24px rgba(62, 207, 142, 0.45); /* green glow (dark) */
+  --glow-strong: 0 0 32px rgba(62, 207, 142, 0.55);
+  --text-glow: 0 0 18px rgba(62, 207, 142, 0.5);
+
+  background: var(--ink);
+  color: var(--white);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* device prefers light → use light unless the user forced a choice */
+@media (prefers-color-scheme: light) {
+  .sd-root {
+    --ink: #ffffff;
+    --ink2: #f6f7f8;
+    --ink3: #eef2f0;
+    --white: #18181b;
+    --muted2: #44444b;
+    --muted: #71717a;
+    --line: rgba(0, 0, 0, 0.08);
+    --faint: #e2e4e7;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --grid-line: rgba(0, 0, 0, 0.045);
+    --accent-soft: rgba(62, 207, 142, 0.14);
+    --glow: 0 6px 20px rgba(62, 207, 142, 0.22);
+    --glow-strong: 0 8px 26px rgba(62, 207, 142, 0.28);
+    --text-glow: none;
+  }
+}
+
+/* explicit user choice always wins over device preference */
+[data-theme="dark"] .sd-root {
+  --ink: #232325;
+  --ink2: #303033;
+  --ink3: #3a3a3e;
+  --white: #f4f4f5;
+  --muted2: #b3b3ba;
+  --muted: #85858d;
+  --line: rgba(255, 255, 255, 0.08);
+  --faint: #44444a;
+  --nav-bg: rgba(35, 35, 37, 0.72);
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --accent-soft: rgba(62, 207, 142, 0.12);
+  --glow: 0 0 24px rgba(62, 207, 142, 0.45);
+  --glow-strong: 0 0 32px rgba(62, 207, 142, 0.55);
+  --text-glow: 0 0 18px rgba(62, 207, 142, 0.5);
+}
+
+[data-theme="light"] .sd-root {
+  --ink: #ffffff;
+  --ink2: #f6f7f8;
+  --ink3: #eef2f0;
+  --white: #18181b;
+  --muted2: #44444b;
+  --muted: #71717a;
+  --line: rgba(0, 0, 0, 0.08);
+  --faint: #e2e4e7;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --grid-line: rgba(0, 0, 0, 0.045);
+  --accent-soft: rgba(62, 207, 142, 0.14);
+  --glow: 0 6px 20px rgba(62, 207, 142, 0.22);
+  --glow-strong: 0 8px 26px rgba(62, 207, 142, 0.28);
+  --text-glow: none;
+}
+
+/* ─── Crossed "boxed" background (hero only) ─────────────────────────────────
+   A theme-aware grid that fills the hero section, with a brand-green radial
+   wash from the top and a soft fade at the bottom so it melts into the page. */
+.sd-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+}
+.sd-hero-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    65% 60% at 50% 0%,
+    rgba(62, 207, 142, 0.16),
+    transparent 70%
+  );
+}
+@media (prefers-color-scheme: light) {
+  .sd-hero-grid::after {
+    background: radial-gradient(
+      65% 60% at 50% 0%,
+      rgba(62, 207, 142, 0.1),
+      transparent 70%
+    );
+  }
+}
+[data-theme="light"] .sd-hero-grid::after {
+  background: radial-gradient(
+    65% 60% at 50% 0%,
+    rgba(62, 207, 142, 0.1),
+    transparent 70%
+  );
+}
+[data-theme="dark"] .sd-hero-grid::after {
+  background: radial-gradient(
+    65% 60% at 50% 0%,
+    rgba(62, 207, 142, 0.18),
+    transparent 70%
+  );
+}
+
+/* ─── Typography helpers ─────────────────────────────────────────────────── */
+.sd-serif {
+  font-family: "Playfair Display", Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.sd-mono {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+}
+
+.sd-body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.sd-eyebrow {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.sd-section-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.sd-amber {
+  color: var(--amber);
+  text-shadow: var(--text-glow);
+}
+
+/* ─── Availability pulse dot ─────────────────────────────────────────────── */
+@keyframes sd-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+.sd-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 4px rgba(62, 207, 142, 0.16);
+  animation: sd-pulse 2s ease-in-out infinite;
+}
+[data-theme="dark"] .sd-pulse-dot {
+  box-shadow:
+    0 0 0 4px rgba(62, 207, 142, 0.16),
+    0 0 12px rgba(62, 207, 142, 0.7);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.sd-btn-primary,
+.sd-btn-ghost {
+  font-family: "DM Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 13px 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+.sd-btn-primary {
+  background: var(--amber);
+  color: var(--on-amber);
+  font-weight: 500;
+}
+.sd-btn-primary:hover {
+  background: var(--amber2);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-strong);
+}
+.sd-btn-ghost {
+  border: 1px solid var(--faint);
+  color: var(--muted2);
+}
+.sd-btn-ghost:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  transform: translateY(-2px);
+}
+
+/* ─── Accent line ────────────────────────────────────────────────────────── */
+.sd-accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, var(--amber), transparent);
+}
+
+/* ─── Chips ──────────────────────────────────────────────────────────────── */
+.sd-chip {
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--muted2);
+  border: 1px solid var(--faint);
+  padding: 4px 11px;
+  border-radius: 999px;
+}
+
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
+.sd-card {
+  background: var(--ink2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+.sd-card:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-4px);
+  background: var(--ink3);
+}
+[data-theme="dark"] .sd-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(62, 207, 142, 0.18),
+    var(--glow);
+}
+
+/* ─── Navbar ─────────────────────────────────────────────────────────────── */
+.sd-nav {
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+.sd-nav--scrolled {
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.sd-nav-link {
+  font-family: "DM Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--muted2);
+  transition: color 0.2s ease;
+}
+.sd-nav-link:hover {
+  color: var(--white);
+}
+
+/* ─── Theme toggle + icon buttons ────────────────────────────────────────── */
+.sd-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--faint);
+  color: var(--muted2);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.sd-icon-btn:hover {
+  color: var(--amber);
+  border-color: var(--amber);
+}
+
+/* The mobile menu trigger styles itself with .sd-icon-btn (display: inline-flex),
+   which would otherwise tie with and beat Tailwind's `md:hidden`. Force it hidden
+   on tablet and up so the hamburger only ever shows on mobile. */
+@media (min-width: 768px) {
+  .sd-menu-trigger {
+    display: none !important;
+  }
+}
+
+/* ─── Mobile menu panel ──────────────────────────────────────────────────── */
+.sd-mobile-panel {
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ─── Project marquee ────────────────────────────────────────────────────── */
+@keyframes sd-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.sd-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: sd-marquee 38s linear infinite;
+}
+.sd-marquee:hover .sd-marquee-track {
+  animation-play-state: paused;
+}
+
+/* ─── Selected-Work bento grid ───────────────────────────────────────────────
+   Single column on mobile; a 12-col / 4-row mosaic on large screens that mirrors
+   the reference layout: tall brand panel (left), featured project (centre),
+   greeting + tall green CTA (right), and a testimonials strip (bottom). */
+.sd-bento {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .sd-bento {
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 172px;
+    grid-template-areas:
+      "brand brand brand article article article article article hello hello hello hello"
+      "brand brand brand article article article article article green green green green"
+      "brand brand brand social  social  social  social  social  green green green green"
+      "testi testi testi testi   testi   testi   testi   testi   green green green green";
+  }
+  .sd-area-brand {
+    grid-area: brand;
+  }
+  .sd-area-article {
+    grid-area: article;
+  }
+  .sd-area-hello {
+    grid-area: hello;
+  }
+  .sd-area-social {
+    grid-area: social;
+  }
+  .sd-area-green {
+    grid-area: green;
+  }
+  .sd-area-testi {
+    grid-area: testi;
+  }
+}
+
+/* dark brand panel — fixed dark surface so it pops in BOTH themes */
+.sd-brand-panel {
+  background: #1b1b1d;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #f4f4f5;
+  overflow: hidden;
+}
+.sd-brand-panel .sd-brand-motif {
+  position: absolute;
+  inset: auto -30% -35% -20%;
+  width: 150%;
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(62, 207, 142, 0.4),
+    rgba(62, 207, 142, 0.05) 55%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  opacity: 0.55;
+}
+
+/* green CTA card */
+.sd-green-card {
+  background: #3ecf8e;
+  color: #08110d;
+  overflow: hidden;
+}
+[data-theme="dark"] .sd-green-card {
+  box-shadow:
+    0 0 0 1px rgba(62, 207, 142, 0.4),
+    0 0 60px rgba(62, 207, 142, 0.35);
+}
+.sd-green-tag {
+  display: inline-block;
+  background: #08110d;
+  color: #fff;
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 5px;
+  width: fit-content;
+  min-width: 96px;
+}
+.sd-green-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(8, 17, 13, 0.45);
+  color: #08110d;
+  transition:
+    background 0.22s ease,
+    transform 0.22s ease;
+}
+.sd-green-btn:hover {
+  background: #08110d;
+  color: #3ecf8e;
+  transform: translateY(-2px);
+}
+
+/* social icon tile inside the bento */
+.sd-social-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  color: var(--muted2);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+.sd-social-tile:hover {
+  color: var(--amber);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+/* ─── Giant gradient wordmark (footer) ───────────────────────────────────────
+   Sits below everything as a full-bleed watermark. The green gradient fades
+   downward so the letters appear to rise off the bottom edge of the page. */
+.sd-bigname {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.78;
+  text-align: center;
+  font-size: clamp(4.5rem, 24vw, 20rem);
+  background: linear-gradient(
+    180deg,
+    #5fe0a6 0%,
+    var(--amber) 50%,
+    #2fae77 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  white-space: nowrap;
+}
+[data-theme="dark"] .sd-bigname {
+  filter: drop-shadow(0 8px 44px rgba(62, 207, 142, 0.35));
+}
+
+/* ─── Section number watermark ───────────────────────────────────────────── */
+.sd-section-num {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: var(--amber);
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-shadow: var(--text-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd-marquee-track {
+    animation: none;
+  }
+  .sd-pulse-dot {
+    animation: none;
+  }
+}
