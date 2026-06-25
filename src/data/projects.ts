@@ -43,6 +43,6 @@ export const projects: Project[] = [
     stack: ["Next.js", "Appwrite", "Tailwind", "TypeScript"],
     url: "https://my-vault-inc.vercel.app/landing",
     accent: "#c4b5fd",
-    image: "/Project-Showcase/Vault.png",
+    image: "/Project-Showcase/vault.png",
   },
 ];
