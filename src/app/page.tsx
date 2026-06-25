@@ -12,7 +12,7 @@ import SDFooter from "./_components/SDFooter";
 export const metadata: Metadata = {
   title: "Milap Magar — Designer & Developer",
   description:
-    "Designer & developer helping founders ship products that feel right. Product design, design systems, and frontend engineering.",
+    "Designer & developer helping companies ship products that feel right. Product design, design systems, and frontend engineering.",
 };
 
 /* Runs before paint: applies the saved theme, or falls back to the device's

@@ -81,7 +81,7 @@ export default function SDHero() {
           className="sd-serif font-black text-[var(--white)] max-w-4xl"
           style={{ fontSize: "clamp(2.4rem, 6.5vw, 5rem)", lineHeight: 1.02 }}
         >
-          Designer &amp; developer helping founders{" "}
+          Designer &amp; developer helping companies{" "}
           <span className="italic sd-amber">ship products</span> that feel
           right.
         </motion.h1>
