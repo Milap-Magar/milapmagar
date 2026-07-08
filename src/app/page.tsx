@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./sd-theme.css";
+import SDLoader from "./_components/SDLoader";
 import SDNavbar from "./_components/SDNavbar";
 import SDHero from "./_components/SDHero";
 import SDProjectCarousel from "./_components/SDProjectCarousel";
@@ -24,6 +25,7 @@ export default function Home() {
     <>
       <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       <main className="sd-root min-h-screen w-full overflow-x-clip">
+        <SDLoader />
         <SDNavbar />
         <SDHero />
         <SDProjectCarousel />
