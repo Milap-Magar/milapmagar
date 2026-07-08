@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Instagram } from "lucide-react";
+import { openBookCall } from "./bookCall";
 
 const stats = [
   { value: "2+", label: "Years shipping" },
@@ -110,11 +111,11 @@ export default function SDHero() {
           className="flex flex-col sm:flex-row sm:items-center gap-5 mt-2"
         >
           <div className="flex items-center gap-3">
-            <a href="#contact" className="sd-btn-primary">
+            <button type="button" onClick={openBookCall} className="sd-btn-primary">
               Book a free call
               <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
-            </a>
-            <a href="#work" className="sd-btn-ghost">
+            </button>
+            <a href="/work" className="sd-btn-ghost">
               View work
             </a>
           </div>

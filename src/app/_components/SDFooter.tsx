@@ -96,7 +96,7 @@ export default function SDFooter() {
 
           <a
             href="mailto:info@milapmagar.com.np"
-            className="sd-serif text-xl sm:text-3xl text-(--muted2] hover:text-(--amber) transition-colors underline underline-offset-8 decoration-(--faint) hover:decoration-(--amber) inline-flex items-center gap-2"
+            className="sd-serif text-xl sm:text-3xl text-(--muted2) hover:text-(--amber) transition-colors underline underline-offset-8 decoration-(--faint) hover:decoration-(--amber) inline-flex items-center gap-2"
           >
             info@milapmagar.com.np
             <ArrowUpRight className="w-6 h-6" strokeWidth={1.5} />
