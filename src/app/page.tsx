@@ -14,7 +14,11 @@ export const metadata: Metadata = {
   title: "Milap Magar — Designer & Developer",
   description:
     "Designer & developer helping companies ship products that feel right. Product design, design systems, and frontend engineering.",
+  verification: {
+    google: <meta name="AzbXfTo21CjUunu98OjiNdvqCGOFetBuEKVEBfW72WI",
+  }
 };
+
 
 /* Runs before paint: applies the saved theme, or falls back to the device's
    color-scheme preference, so there's no flash of the wrong theme. */
