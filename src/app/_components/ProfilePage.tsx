@@ -68,12 +68,14 @@ export default function ProfilePage({ github }: { github: GithubData }) {
   const columns = twoCols ? [left, right] : [single];
 
   return (
-    <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:grid lg:h-dvh lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-10 lg:overflow-hidden lg:px-10">
+    /* On desktop the card column scrolls all the way to the viewport's right edge;
+       --gutter keeps the content itself inside the same 1360px frame. */
+    <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:grid lg:h-dvh lg:max-w-none lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-10 lg:overflow-hidden lg:pr-0 lg:pl-(--gutter) lg:[--gutter:max(2.5rem,calc((100vw_-_1360px)/2_+_2.5rem))]">
       <div className="pt-8 lg:pt-0">
         <Sidebar onShare={() => setShareOpen(true)} onChat={() => setChatOpen(true)} projectCount={profile.shipped} />
       </div>
 
-      <main className="scroll-quiet mt-10 pb-10 lg:mt-0 lg:h-dvh lg:overflow-y-auto lg:py-8">
+      <main className="scroll-quiet mt-10 pb-10 lg:mt-0 lg:h-dvh lg:overflow-y-auto lg:py-8 lg:pr-(--gutter)">
         <div className="flex gap-7">
           {columns.map((col, c) => (
             <div key={c} className="flex min-w-0 flex-1 flex-col gap-7">
