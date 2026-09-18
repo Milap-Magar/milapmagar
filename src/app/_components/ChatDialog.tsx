@@ -20,7 +20,7 @@ export default function ChatDialog({ open, onClose }: { open: boolean; onClose: 
     setStatus("sending");
     setError("");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/discord", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(new FormData(e.currentTarget))),
