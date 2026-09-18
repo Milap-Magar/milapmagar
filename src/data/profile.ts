@@ -5,7 +5,7 @@ export const profile = {
   name: "Milap Magar",
   handle: "milapmagar",
   /** Drop the photo in /public and set the path here, e.g. "/milap.jpg". */
-  avatar: null as string | null,
+  avatar: "/milap.png" as string | null,
   role: "Designer & Full-Stack Developer",
   company: "Chatblix",
   location: "Kathmandu, Nepal",

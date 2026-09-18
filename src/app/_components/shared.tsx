@@ -3,7 +3,7 @@ import { ImagePlus } from "lucide-react";
 import { profile } from "@/data/profile";
 import type { ContributionDay } from "@/lib/github";
 
-/** Profile photo, or a dashed placeholder until `profile.avatar` is set. */
+/** Profile photo (framed on the figure, low in the shot), or a dashed placeholder until `profile.avatar` is set. */
 export function Avatar({ size, className = "" }: { size: number; className?: string }) {
   if (profile.avatar) {
     return (
@@ -14,7 +14,7 @@ export function Avatar({ size, className = "" }: { size: number; className?: str
         height={size}
         priority
         className={`rounded-full object-cover ${className}`}
-        style={{ width: size, height: size }}
+        style={{ width: size, height: size, objectPosition: "50% 70%" }}
       />
     );
   }
