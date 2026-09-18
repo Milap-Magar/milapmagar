@@ -8,6 +8,8 @@ export const profile = {
   avatar: "/milap.png" as string | null,
   role: "Designer & Full-Stack Developer",
   company: "Chatblix",
+  /** Shown on the "shipped" stamp and the share card badge. */
+  shipped: 3,
   location: "Kathmandu, Nepal",
   timeZone: "Asia/Kathmandu",
   tagline: '"Just a developer who - solves problems"',

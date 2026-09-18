@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import { BadgeCheck, Check, Copy, CreditCard, Download, Ellipsis, MapPin, Network, ScanLine } from "lucide-react";
 import { profile } from "@/data/profile";
-import { projects } from "@/data/projects";
 import type { ContributionDay } from "@/lib/github";
 import Modal from "./Modal";
 import { Avatar, ContributionGrid } from "./shared";
@@ -37,7 +36,7 @@ function ProfileCard({ days, url }: { days: ContributionDay[]; url: string }) {
             <p className="truncate font-display text-2xl text-fg">{profile.name}</p>
             <span className="flex items-center gap-0.5 rounded-full border border-accent px-1.5 py-0.5 text-xs text-accent">
               <BadgeCheck className="h-3.5 w-3.5" />
-              {projects.length}
+              {profile.shipped}
             </span>
           </div>
           <p className="truncate text-sm italic text-fg-2">{profile.role}</p>

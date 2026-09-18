@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import type { GithubData } from "@/lib/github";
 import Sidebar from "./Sidebar";
@@ -69,7 +70,7 @@ export default function ProfilePage({ github }: { github: GithubData }) {
   return (
     <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:grid lg:h-dvh lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-10 lg:overflow-hidden lg:px-10">
       <div className="pt-8 lg:pt-0">
-        <Sidebar onShare={() => setShareOpen(true)} onChat={() => setChatOpen(true)} projectCount={projects.length} />
+        <Sidebar onShare={() => setShareOpen(true)} onChat={() => setChatOpen(true)} projectCount={profile.shipped} />
       </div>
 
       <main className="scroll-quiet mt-10 pb-10 lg:mt-0 lg:h-dvh lg:overflow-y-auto lg:py-8">
