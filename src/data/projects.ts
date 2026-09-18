@@ -11,14 +11,14 @@ export const projects: Project[] = [
     image: "/Project-Showcase/chatblix.png",
   },
   {
-    title: "Codenest",
+    title: "PixSift",
     tagline:
-      "A GitHub-style local code storage and codebase management application.",
-    stack: ["Next.js", "Node.js", "Express.js", "Supabase", "TypeScript"],
-    url: "https://codenestify.vercel.app/",
-    accent: "000000",
-    commingSoon: true,
-    image: "/Project-Showcase/codenest.png",
+      "Photo discovery on the Pixabay API — Google sign-in, saved collections, and ranking for Discover and Most Popular.",
+    stack: ["Next.js", "NextAuth", "MongoDB", "Pixabay API", "Algorithms"],
+    url: "https://pixsift.vercel.app/",
+    accent: "#c4b5fd",
+    commingSoon: false,
+    image: "/Project-Showcase/pixsift.png",
   },
   {
     title: "Shreejana Dry Fruits",
