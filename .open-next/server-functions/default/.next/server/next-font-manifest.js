@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/home/milx/Documents/workspace/milapmagar/src/app/layout":["static/media/3b011bc2a961fce0-s.p.woff2","static/media/5c0c2bcbaa4149ca-s.p.woff2","static/media/110cbef534704ef8-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
