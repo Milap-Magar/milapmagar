@@ -29,8 +29,32 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on Cloudflare
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site runs as a Cloudflare Worker (`milapmagar`) via the [OpenNext](https://opennext.js.org/cloudflare)
+adapter, which keeps full Next.js behaviour: ISR, `next/image`, and the `/api/discord` route handler.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm preview   # build + run the real Worker locally
+pnpm deploy    # build + deploy from your machine
+```
+
+`wrangler.jsonc` is committed and is the source of truth — do not let `wrangler deploy`
+regenerate it (see the Workers Builds settings below), or the `WORKER_SELF_REFERENCE`
+service binding will point at a Worker name that does not exist.
+
+### Workers Builds settings (dashboard)
+
+| Setting | Value |
+| --- | --- |
+| Build command | `pnpm run build:cf` |
+| Deploy command | `npx opennextjs-cloudflare deploy` |
+| Path / root directory | *(empty)* |
+
+### Secrets
+
+`/api/discord` needs `DISCORD_WEBHOOK_URL`:
+
+- production: Worker → Settings → Variables and Secrets → add as **Secret**
+- local `pnpm dev`: `.env`
+- local `pnpm preview`: `.dev.vars`
