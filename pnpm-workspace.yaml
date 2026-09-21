@@ -1,5 +1,15 @@
+# pnpm 10 (used by Cloudflare Workers Builds) reads onlyBuiltDependencies;
+# pnpm 12+ reads allowBuilds. Keep both in sync.
+onlyBuiltDependencies:
+  - "@tailwindcss/oxide"
+  - esbuild
+  - sharp
+  - unrs-resolver
+  - workerd
+
 allowBuilds:
-  esbuild: set this to true or false
+  "@tailwindcss/oxide": true
+  esbuild: true
   sharp: true
   unrs-resolver: true
-  workerd: set this to true or false
+  workerd: true
