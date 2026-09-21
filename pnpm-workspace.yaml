@@ -1,5 +1,19 @@
-# pnpm 10 (used by Cloudflare Workers Builds) reads onlyBuiltDependencies;
-# pnpm 12+ reads allowBuilds. Keep both in sync.
+# Single-package repo, but this file must stay valid for every pnpm version
+# Cloudflare Workers Builds might run.
+#
+# `packages` is required whenever this file exists: pnpm <= 10.4 (and pnpm 9)
+# abort with "ERROR  packages field missing or empty" before installing
+# anything, which is what was breaking the Cloudflare build.
+packages:
+  - "."
+
+# Approving native postinstall scripts moved twice, so it is declared in three
+# places. Keep all three in sync:
+#   - pnpm <= 10.5  -> "pnpm.onlyBuiltDependencies" in package.json
+#   - pnpm 10.6-11  -> onlyBuiltDependencies below
+#   - pnpm 12+      -> allowBuilds below
+# (pnpm 12 warns that it ignores the package.json field; that warning is
+# expected and harmless.)
 onlyBuiltDependencies:
   - "@tailwindcss/oxide"
   - esbuild
