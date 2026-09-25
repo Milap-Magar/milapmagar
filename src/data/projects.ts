@@ -15,7 +15,7 @@ export const projects: Project[] = [
     tagline:
       "Photo discovery on the Pixabay API — Google sign-in, saved collections, and ranking for Discover and Most Popular.",
     stack: ["Next.js", "NextAuth", "MongoDB", "Pixabay API", "Algorithms"],
-    url: "https://pixsift.vercel.app/",
+    url: "https://pixsift.milapmagar.com.np/",
     accent: "#c4b5fd",
     commingSoon: false,
     image: "/Project-Showcase/pixsift.png",
