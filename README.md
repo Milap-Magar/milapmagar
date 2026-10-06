@@ -1,33 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# milapmagar.com.np
 
-## Getting Started
-
-First, run the development server:
+Personal site of Milap Magar — a Next.js 15 app styled like a cork board of hand-pinned cards.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build      # production build + type check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | What it shows | Edit |
+| --- | --- | --- |
+| `/` | Sidebar + the home board (5 newest projects mixed with the about cards) | `src/data/profile.ts`, `src/app/_components/HomeBoard.tsx` |
+| `/projects` | Every project as a card; click a screenshot for the full-size view | `src/data/projects.ts` |
+| `/blog` and `/blog/[slug]` | Post list and read-in-place articles | `src/data/posts.ts` |
+| `/experience` | Timeline of roles | `src/data/experience.ts` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Adding content is a data edit, no JSX needed:
 
-## Learn More
+- **Project** — append to `projects` in `src/data/projects.ts` (newest first) and drop a screenshot in
+  `public/Project-Showcase/` (≥1200px wide, WebP). Anything without `comingSoon: true` counts towards
+  the "shipped" stamp. The first five entries appear on the home board.
+- **Post** — append to `posts` in `src/data/posts.ts`; `body` is one string per paragraph. The route,
+  sitemap entry and `BlogPosting` structured data are generated from it.
+- **Experience** — append to `experience` in `src/data/experience.ts`; dates are `YYYY-MM`, leave `to`
+  out for the current role.
 
-To learn more about Next.js, take a look at the following resources:
+## SEO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Site-wide metadata (title template, Open Graph, Twitter card, robots, icons, manifest) lives in
+  `src/app/layout.tsx`; the canonical origin is `SITE_URL` in `src/lib/site.ts`
+  (override with `NEXT_PUBLIC_SITE_URL`).
+- `src/app/sitemap.ts`, `robots.ts` and `manifest.ts` serve `/sitemap.xml`, `/robots.txt` and
+  `/manifest.webmanifest`.
+- JSON-LD: `Person` + `WebSite` on every page, plus `CollectionPage`/`ItemList` on `/projects`,
+  `Blog`/`BlogPosting` on the blog and `ProfilePage` on `/experience`.
+- The share image is `public/og.png` (1200×630).
 
 ## Deploy on Cloudflare
 
