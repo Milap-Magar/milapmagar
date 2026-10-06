@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Briefcase, Clock, Mail, MapPin, MessageCircle, Share2 } from "lucide-react";
 import { EMAIL, profile, socials } from "@/data/profile";
 import { Avatar, Squiggle, TAG_TONES } from "./shared";
@@ -31,6 +33,13 @@ function LocalTime() {
 
 const TILTS = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2"];
 
+const NAV = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/experience", label: "Experience" },
+];
+
 export default function Sidebar({
   onShare,
   onChat,
@@ -40,6 +49,10 @@ export default function Sidebar({
   onChat: () => void;
   projectCount: number;
 }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  // The name is the page's <h1> only on the home page; subpages have their own.
+  const Name = isHome ? "h1" : "p";
   const details = [
     { icon: Briefcase, content: profile.role },
     {
@@ -79,12 +92,32 @@ export default function Sidebar({
       </div>
 
       <p className="mt-4 italic text-fg-3">hi, I&apos;m</p>
-      <h1 className="relative w-fit font-display text-[2.7rem] leading-[1.05] text-fg">
-        {profile.name}
+      <Name className="relative w-fit font-display text-[2.7rem] leading-[1.05] text-fg">
+        <Link href="/" className="hover:text-fg">
+          {profile.name}
+        </Link>
         <Squiggle className="absolute -bottom-2 left-0 h-3 w-full text-accent" />
-      </h1>
+      </Name>
 
-      <ul className="mt-5 space-y-1 text-[0.95rem] text-fg-2">
+      <nav aria-label="Primary" className="mt-5 flex w-fit flex-wrap items-center gap-1 rounded-xl border border-line-strong bg-card p-1">
+        {NAV.map(({ href, label }) => {
+          const active = href === "/" ? isHome : pathname.startsWith(href);
+          return (
+            <Link
+              key={href}
+              href={href}
+              aria-current={active ? "page" : undefined}
+              className={`rounded-lg px-3 py-1 font-display text-[1.05rem] transition-colors ${
+                active ? "bg-paper-2 text-fg shadow-[2px_2px_0_var(--line)]" : "text-fg-2 hover:bg-paper-2 hover:text-accent"
+              }`}
+            >
+              {label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <ul className="mt-4 space-y-1 text-[0.95rem] text-fg-2">
         {details.map(({ icon: Icon, content }, i) => (
           <li key={i} className="flex items-center gap-3">
             <Icon className="h-4 w-4 shrink-0 text-fg-3" strokeWidth={1.6} />
