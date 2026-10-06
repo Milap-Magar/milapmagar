@@ -1,55 +1,14 @@
-import Image from "next/image";
-import { ArrowUpRight, ExternalLink, Layers, Mail } from "lucide-react";
+import { ExternalLink, Layers, Mail } from "lucide-react";
+import Link from "next/link";
 import { craftSplit, EMAIL, GITHUB_USER, journey, now, quote, socials, toolbox } from "@/data/profile";
 import type { GithubData } from "@/lib/github";
-import type { Project } from "@/types";
 import { Avatar, ContributionGrid, Squiggle } from "../shared";
 import { FacebookIcon, GithubIcon, InstagramIcon, LinkedinIcon } from "../BrandIcons";
 
 const outlineBtn =
   "flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-line-strong font-display text-lg text-fg-2 transition-colors hover:border-accent hover:bg-paper-2 hover:text-accent";
 
-const chip = "rounded-md border border-line bg-paper-2/60 px-2 py-0.5 text-xs text-fg-2";
-
 const title = "font-display text-[1.45rem] leading-tight text-fg";
-
-export function ProjectCard({ project, tapeLeft }: { project: Project; tapeLeft?: boolean }) {
-  return (
-    <a href={project.url} target="_blank" rel="noreferrer" className="card group block p-5">
-      <div className="flex items-start justify-between gap-3">
-        <h3 className={title}>{project.title}</h3>
-        <span className="flex items-center gap-2 pt-1">
-          {project.commingSoon && (
-            <span className="rounded-full border border-dashed border-accent px-2 py-0.5 text-xs italic text-accent">
-              still cooking
-            </span>
-          )}
-          <ArrowUpRight className="h-5 w-5 text-fg-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
-        </span>
-      </div>
-      <p className="mt-1.5 text-[0.95rem] leading-relaxed text-fg-2">{project.tagline}</p>
-      <div className="relative mt-5">
-        <span className={`tape -top-2.5 ${tapeLeft ? "-left-3 -rotate-[24deg]" : "-right-3 rotate-[22deg]"}`} />
-        <div className="overflow-hidden rounded-md border border-line-strong bg-paper-2 p-1.5">
-          <Image
-            src={project.image}
-            alt={`${project.title} screenshot`}
-            width={1200}
-            height={750}
-            className="aspect-[16/10] w-full rounded-[3px] object-cover object-top saturate-[0.85] sepia-[0.08] transition-[filter] duration-500 group-hover:saturate-100 group-hover:sepia-0"
-          />
-        </div>
-      </div>
-      <div className="mt-4 flex flex-wrap gap-1.5">
-        {project.stack.map((s) => (
-          <span key={s} className={chip}>
-            {s}
-          </span>
-        ))}
-      </div>
-    </a>
-  );
-}
 
 export function GithubCard({ github }: { github: GithubData }) {
   return (
@@ -278,6 +237,21 @@ export function SignOffCard() {
     <div className="px-2 pb-4 pt-2 text-center">
       <p className="font-display text-2xl text-fg">That&apos;s most of it.</p>
       <Squiggle className="mx-auto mt-1 h-3 w-40 text-accent" />
+      <p className="mt-3 text-[0.95rem] italic text-fg-2">
+        More on the{" "}
+        <Link href="/projects" className="text-accent underline underline-offset-4">
+          projects
+        </Link>
+        ,{" "}
+        <Link href="/blog" className="text-accent underline underline-offset-4">
+          blog
+        </Link>{" "}
+        and{" "}
+        <Link href="/experience" className="text-accent underline underline-offset-4">
+          experience
+        </Link>{" "}
+        pages.
+      </p>
       <p className="mt-3 text-[0.95rem] italic text-fg-2">
         Got something half-built or not yet started? <br />
         <a href={`mailto:${EMAIL}`} className="text-accent underline underline-offset-4">
