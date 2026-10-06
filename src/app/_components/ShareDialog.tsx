@@ -5,14 +5,13 @@ import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import { BadgeCheck, Check, Copy, CreditCard, Download, Ellipsis, MapPin, Network, ScanLine } from "lucide-react";
 import { profile } from "@/data/profile";
 import type { ContributionDay } from "@/lib/github";
+import { SITE_URL } from "@/lib/site";
 import Modal from "./Modal";
 import { Avatar, ContributionGrid } from "./shared";
 import { FacebookIcon, GithubIcon, InstagramIcon, LinkedinIcon, WhatsappIcon, XIcon } from "./BrandIcons";
 
-const FALLBACK_URL = "https://milapmagar.com.np";
-
 function useShareUrl() {
-  const [url, setUrl] = useState(FALLBACK_URL);
+  const [url, setUrl] = useState(SITE_URL);
   useEffect(() => setUrl(window.location.origin), []);
   return url;
 }
