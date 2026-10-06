@@ -1,3 +1,5 @@
+import { shippedCount } from "./projects";
+
 export const EMAIL = "info@milapmagar.com.np";
 export const GITHUB_USER = "Milap-Magar";
 
@@ -8,8 +10,8 @@ export const profile = {
   avatar: "/milap.png" as string | null,
   role: "Designer & Full-Stack Developer",
   company: "Chatblix",
-  /** Shown on the "shipped" stamp and the share card badge. */
-  shipped: 3,
+  /** Shown on the "shipped" stamp and the share card badge — counts live projects in data/projects.ts. */
+  shipped: shippedCount,
   location: "Kathmandu, Nepal",
   timeZone: "Asia/Kathmandu",
   tagline: '"Just a developer who - solves problems"',
@@ -26,7 +28,7 @@ export const profile = {
 
 /** Short, current, first-person. Edit freely — it's the most "human" card on the page. */
 export const now = [
-  "Building PixSift — photo discovery on the Pixabay API, with Google sign-in and collections.",
+  "Shipping Shelfmallow — books and notes for students, React on the front and a Spring Boot API behind it.",
   "Tidying up Chatblix's onboarding.",
   "Open to freelance and full-time product work.",
 ];
@@ -44,7 +46,7 @@ export const journey = [
   { year: "2023", label: "Shreejana", level: 0.45 },
   { year: "2024", label: "Vault", level: 0.35 },
   { year: "2025", label: "Chatblix", level: 0.85 },
-  { year: "Now", label: "PixSift", level: 0.95 },
+  { year: "Now", label: "Shelfmallow", level: 0.95 },
 ];
 
 /** How the work splits — used by the "Where my hours go" card. Sums to 100. */
@@ -55,7 +57,7 @@ export const craftSplit = [
 ];
 
 export const toolbox = [
-  "Figma", "React", "Next.js", "TypeScript", "Tailwind", "Framer Motion", "Node.js", "Java", "PostgreSQL", "MongoDB", "Supabase", "Docker",
+  "Figma", "React", "Next.js", "TypeScript", "Tailwind", "Framer Motion", "Node.js", "Java", "Spring Boot", "PostgreSQL", "MongoDB", "Supabase", "Docker",
 ];
 
 export const quote =
