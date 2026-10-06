@@ -6,13 +6,15 @@ const nextConfig: NextConfig = {
     /* Project screenshots ask for 90 so they stay crisp; everything else uses the default 75. */
     qualities: [75, 90],
   },
-  /* The site is a single profile page now; keep old links landing somewhere. */
+  /* Old URLs from the previous site keep landing somewhere sensible. */
   async redirects() {
-    return ["/work", "/about-me", "/case-study", "/blog"].map((source) => ({
-      source,
-      destination: "/",
-      permanent: true,
-    }));
+    return [
+      { source: "/work", destination: "/projects", permanent: true },
+      { source: "/case-study", destination: "/projects", permanent: true },
+      { source: "/case-study/:slug", destination: "/projects", permanent: true },
+      { source: "/about-me", destination: "/experience", permanent: true },
+      { source: "/about", destination: "/experience", permanent: true },
+    ];
   },
 };
 
