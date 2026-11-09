@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   /* Old URLs from the previous site keep landing somewhere sensible. */
   async redirects() {
     return [
+      /* One host only: www serves the same pages, so send it to the canonical origin. */
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.milapmagar.com.np" }],
+        destination: "https://milapmagar.com.np/:path*",
+        permanent: true,
+      },
       { source: "/work", destination: "/projects", permanent: true },
       { source: "/case-study", destination: "/projects", permanent: true },
       { source: "/case-study/:slug", destination: "/projects", permanent: true },

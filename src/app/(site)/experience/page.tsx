@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight, Briefcase, GraduationCap, MapPin } from "lucide-react";
 import { experience } from "@/data/experience";
 import { EMAIL, profile, socials } from "@/data/profile";
-import { JsonLd, pageMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import PageHeader from "../../_components/PageHeader";
 
@@ -137,7 +137,7 @@ export default function ExperiencePage() {
           and I&apos;ll send a current CV.
         </p>
       </div>
-      <JsonLd data={jsonLd} />
+      <JsonLd data={[jsonLd, breadcrumbJsonLd([{ name: "Experience", path: "/experience" }])]} />
     </>
   );
 }

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { posts } from "@/data/posts";
 import { profile } from "@/data/profile";
-import { JsonLd, pageMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { Squiggle } from "../../../_components/shared";
 
@@ -118,7 +118,15 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </Link>
         )}
       </nav>
-      <JsonLd data={jsonLd} />
+      <JsonLd
+        data={[
+          jsonLd,
+          breadcrumbJsonLd([
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
     </article>
   );
 }

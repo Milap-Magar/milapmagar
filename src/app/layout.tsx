@@ -33,7 +33,6 @@ export const metadata: Metadata = {
   creator: profile.name,
   publisher: profile.name,
   category: "technology",
-  alternates: { canonical: SITE_URL },
   openGraph: {
     type: "profile",
     firstName: "Milap",

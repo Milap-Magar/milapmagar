@@ -34,8 +34,13 @@ Adding content is a data edit, no JSX needed:
   (override with `NEXT_PUBLIC_SITE_URL`).
 - `src/app/sitemap.ts`, `robots.ts` and `manifest.ts` serve `/sitemap.xml`, `/robots.txt` and
   `/manifest.webmanifest`.
-- JSON-LD: `Person` + `WebSite` on every page, plus `CollectionPage`/`ItemList` on `/projects`,
-  `Blog`/`BlogPosting` on the blog and `ProfilePage` on `/experience`.
+- JSON-LD: `Person` + `WebSite` on every page, `ProfilePage` on `/` and `/experience`,
+  `CollectionPage`/`ItemList` on `/projects`, `Blog`/`BlogPosting` on the blog, and a
+  `BreadcrumbList` on every subpage (`breadcrumbJsonLd` in `src/lib/seo.tsx`).
+- `src/app/feed.xml/route.ts` serves the blog as RSS at `/feed.xml`; every page advertises it.
+- One `<h1>` per page (the name on `/`, the page title elsewhere); cards are `<h2>`.
+- `www.milapmagar.com.np` 301s to the bare domain (`next.config.ts`). HTTP → HTTPS is a Cloudflare
+  setting: SSL/TLS → Edge Certificates → **Always Use HTTPS**.
 - The share image is `public/og.png` (1200×630).
 
 ## Deploy on Cloudflare

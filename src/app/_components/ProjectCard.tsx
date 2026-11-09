@@ -29,11 +29,11 @@ export default function ProjectCard({
   return (
     <article className="card group relative p-5">
       <div className="flex items-start justify-between gap-3">
-        <h3 className="font-display text-[1.45rem] leading-tight text-fg">
+        <h2 className="font-display text-[1.45rem] leading-tight text-fg">
           <a href={project.url} target="_blank" rel="noreferrer" className="hover:text-accent">
             {project.title}
           </a>
-        </h3>
+        </h2>
         <span className="flex items-center gap-2 pt-1">
           {project.comingSoon && (
             <span className="rounded-full border border-dashed border-accent px-2 py-0.5 text-xs italic text-accent">

@@ -5,6 +5,9 @@ export const SITE_TITLE = "Milap Magar — Designer & Full-Stack Developer in Ka
 export const SITE_DESCRIPTION =
   "Milap Magar is a product designer and full-stack developer from Kathmandu, Nepal. Design systems, Next.js, React, Node.js, Java and Spring Boot — products designed and shipped end to end, including Chatblix, Shelfmallow and PixSift.";
 
+/** RSS feed of the blog, served by app/feed.xml/route.ts. */
+export const FEED_PATH = "/feed.xml";
+
 export const KEYWORDS = [
   "Milap Magar",
   "Milap Magar developer",

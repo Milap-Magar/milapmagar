@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { posts } from "@/data/posts";
 import { profile } from "@/data/profile";
-import { JsonLd, pageMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import PageHeader from "../../_components/PageHeader";
 
@@ -83,7 +83,7 @@ export default function BlogPage() {
           ))}
         </ul>
       )}
-      <JsonLd data={jsonLd} />
+      <JsonLd data={[jsonLd, breadcrumbJsonLd([{ name: "Blog", path: "/blog" }])]} />
     </>
   );
 }

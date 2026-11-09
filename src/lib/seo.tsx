@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl, SITE_NAME } from "./site";
+import { absoluteUrl, FEED_PATH, SITE_NAME } from "./site";
 
 /** Per-page metadata with a canonical URL and matching Open Graph / Twitter cards. */
 export function pageMetadata({
@@ -19,7 +19,7 @@ export function pageMetadata({
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, types: { "application/rss+xml": [{ url: FEED_PATH, title: `${SITE_NAME} — Blog` }] } },
     openGraph: {
       type,
       url,
@@ -34,6 +34,20 @@ export function pageMetadata({
       description,
       images: [image],
     },
+  };
+}
+
+/** BreadcrumbList for a subpage; "Home" is added for you. Pass the trail in order, ending on the current page. */
+export function breadcrumbJsonLd(trail: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [{ name: "Home", path: "/" }, ...trail].map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      item: absoluteUrl(crumb.path),
+    })),
   };
 }
 

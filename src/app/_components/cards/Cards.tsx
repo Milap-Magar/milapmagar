@@ -67,7 +67,7 @@ export function NetworkCard() {
 
   return (
     <div className="card p-5">
-      <h3 className={title}>Where to find me</h3>
+      <h2 className={title}>Where to find me</h2>
       <div className="grid-paper relative mt-4 aspect-square w-full overflow-hidden rounded-md border border-line-strong">
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <g stroke="#9b8468" strokeWidth="1.2" strokeDasharray="4 3" fill="none">
@@ -119,7 +119,7 @@ export function JourneyCard() {
   return (
     <div className="card p-5">
       <div className="flex items-center justify-between">
-        <h3 className={title}>How I built projects</h3>
+        <h2 className={title}>How I built projects</h2>
         <LinkedinIcon className="h-6 w-6 text-fg-3" />
       </div>
       <svg viewBox={`0 0 ${W} ${H + 24}`} className="mt-3 w-full" role="img" aria-label="Career journey from 2022 to now">
@@ -159,7 +159,7 @@ export function NowCard() {
   return (
     <div className="card p-5">
       <div className="flex items-baseline justify-between">
-        <h3 className={title}>Now</h3>
+        <h2 className={title}>Now</h2>
         <span className="text-xs italic text-fg-3">updated by hand</span>
       </div>
       <ul className="mt-3 space-y-2.5">
@@ -177,7 +177,7 @@ export function NowCard() {
 export function ToolboxCard() {
   return (
     <div className="card p-5">
-      <h3 className={title}>Things I reach for</h3>
+      <h2 className={title}>Things I reach for</h2>
       <p className="mt-1 text-sm italic text-fg-3">in no particular order, except Figma first.</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {toolbox.map((t, i) => (
@@ -209,7 +209,7 @@ export function QuoteCard() {
 export function CraftSplitCard() {
   return (
     <div className="card p-5">
-      <h3 className={title}>Where my hours go</h3>
+      <h2 className={title}>Where my hours go</h2>
       <div className="mt-5 flex h-14 overflow-hidden rounded-md border border-line-strong">
         {craftSplit.map((c, i) => (
           <div

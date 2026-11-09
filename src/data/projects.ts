@@ -4,6 +4,24 @@ import type { Project } from "@/types";
    the sitemap and the "shipped" stamp (anything not marked comingSoon counts). */
 export const projects: Project[] = [
   {
+    slug: "ordiva",
+    title: "Ordiva",
+    tagline: "Order management, made simple — every order, customer and bit of stock in one clear place, from placed to delivered.",
+    description:
+      "An order management system for small sellers: track orders through pending, packed, shipped and delivered, alongside customers and stock. A Bun + React 19 frontend in plain CSS with a dependency-free router (~73 KB gzipped JS), talking to a Spring Boot and PostgreSQL API through a same-origin /api proxy with JWT auth. The landing page is live; the dashboard is still being built.",
+    kind: "web",
+    year: "2026",
+    role: "Design · Full-stack",
+    stack: ["React 19", "TypeScript", "Bun", "Spring Boot", "Spring Security", "PostgreSQL"],
+    url: "https://order.milapmagar.com.np/",
+    repo: "https://github.com/Milap-Magar/oms",
+    accent: "#0f766e",
+    // Only the landing page is live. Drop this once the dashboard ships.
+    comingSoon: true,
+    image: "/Project-Showcase/ordiva.webp",
+    imageAspect: 1191 / 711,
+  },
+  {
     slug: "shelfmallow",
     title: "Shelfmallow",
     tagline: "Books and notes on one soft shelf — course books, notes and past papers shared by students, free to read.",

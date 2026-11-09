@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { profile } from "@/data/profile";
 import { projects, shippedCount } from "@/data/projects";
-import { JsonLd, pageMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import Board from "../../_components/Board";
 import PageHeader from "../../_components/PageHeader";
@@ -61,7 +61,7 @@ export default function ProjectsPage() {
         }
       />
       <Board left={left} right={right} />
-      <JsonLd data={jsonLd} />
+      <JsonLd data={[jsonLd, breadcrumbJsonLd([{ name: "Projects", path: "/projects" }])]} />
     </>
   );
 }
