@@ -41,7 +41,9 @@ export default function ProjectsPage() {
           image: absoluteUrl(p.image),
           author: { "@id": absoluteUrl("/#person") },
           ...(p.year ? { dateCreated: p.year } : {}),
-          ...(p.repo ? { codeRepository: p.repo } : {}),
+          ...(p.repo || p.apiRepo
+            ? { codeRepository: p.repo && p.apiRepo ? [p.repo, p.apiRepo] : (p.repo ?? p.apiRepo) }
+            : {}),
         },
       })),
     },

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Github, Maximize2 } from "lucide-react";
+import { ArrowUpRight, Github, Maximize2, Server } from "lucide-react";
 import type { Project } from "@/types";
 import Modal from "./Modal";
 
@@ -100,6 +100,18 @@ export default function ProjectCard({
             <Github className="h-4 w-4" />
           </a>
         )}
+        {project.apiRepo && (
+          <a
+            href={project.apiRepo}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${project.title} API source on GitHub`}
+            title="API source on GitHub"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-line-strong text-fg-3 transition-colors hover:border-accent hover:text-accent"
+          >
+            <Server className="h-4 w-4" />
+          </a>
+        )}
       </div>
 
       <Modal open={open} onClose={() => setOpen(false)} title={project.title} className="sm:max-w-[min(96vw,1440px)]">
@@ -132,7 +144,17 @@ export default function ProjectCard({
               rel="noreferrer"
               className="flex h-10 items-center gap-1.5 rounded-xl border border-line-strong px-4 font-display text-lg text-fg-2 hover:border-accent hover:text-accent"
             >
-              <Github className="h-4 w-4" /> Source
+              <Github className="h-4 w-4" /> {project.apiRepo ? "Frontend" : "Source"}
+            </a>
+          )}
+          {project.apiRepo && (
+            <a
+              href={project.apiRepo}
+              target="_blank"
+              rel="noreferrer"
+              className="flex h-10 items-center gap-1.5 rounded-xl border border-line-strong px-4 font-display text-lg text-fg-2 hover:border-accent hover:text-accent"
+            >
+              <Server className="h-4 w-4" /> API
             </a>
           )}
           <span className="ml-auto text-xs italic text-fg-3">

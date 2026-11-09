@@ -14,6 +14,8 @@ export interface Project {
   url: string;
   /** Public source, if any. */
   repo?: string;
+  /** Backend source, when the API lives in its own repo. */
+  apiRepo?: string;
   accent: string;
   comingSoon?: boolean;
   /** Screenshot under /public — keep it ≥1200px wide so it stays sharp in the lightbox. */

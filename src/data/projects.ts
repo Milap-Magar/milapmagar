@@ -15,6 +15,7 @@ export const projects: Project[] = [
     stack: ["React 19", "TypeScript", "Bun", "Spring Boot", "Spring Security", "PostgreSQL"],
     url: "https://order.milapmagar.com.np/",
     repo: "https://github.com/Milap-Magar/oms",
+    apiRepo: "https://github.com/Milap-Magar/oms-refs",
     accent: "#0f766e",
     // Only the landing page is live. Drop this once the dashboard ships.
     comingSoon: true,
