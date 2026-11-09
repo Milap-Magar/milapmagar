@@ -7,7 +7,7 @@
     "build": "next build",
     "build:cf": "opennextjs-cloudflare build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
@@ -16,24 +16,23 @@
     "framer-motion": "^12.18.1",
     "gsap": "^3.15.0",
     "lucide-react": "^0.516.0",
-    "next": "15.5.25",
+    "next": "16.4.5",
     "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@opennextjs/cloudflare": "^1.20.6",
+    "@opennextjs/cloudflare": "^1.20.16",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.177.0",
     "eslint": "^9",
-    "eslint-config-next": "15.5.25",
+    "eslint-config-next": "16.4.5",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "wrangler": "^4.135.0"
+    "wrangler": "^4.158.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
